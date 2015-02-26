@@ -2,11 +2,6 @@
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
-    res.view.get('linkedPage').title = "Error";
-    next();
-  });
-
-  app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
@@ -20,6 +15,7 @@ module.exports = function(app) {
   }
 
   app.use(function(err, req, res, next) {
+    res.view.get('linkedPage').title = "Error";
     res.status(err.status || 500);
     res.render('error', {
       status: res.statusCode,

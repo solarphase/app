@@ -11,6 +11,8 @@ router.get('/', function(req, res, next) {
   }).then(function(page) {
     if (page !== null) {
       res.view.set('linkedPage', page);
+    } else {
+      return next(new Error('No page with the role of index was found!'));
     }
     
     res.render('index');
