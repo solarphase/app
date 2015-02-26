@@ -10,9 +10,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// Models.
+
+var models = require('./models');
+
 // Helper libraries.
 
 var markdownHelper = require('./lib/markdown-helper');
+var viewHelper = require('./lib/view-helper');
 
 // Routes.
 
@@ -41,8 +46,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Helpers.
 
 app.use(markdownHelper());
+app.use(viewHelper());
 
 // Routes.
+
+app.use(function(req, res, next) {
+  res.view.set("linkedPage", models.Page.build({
+    title: "Undefined"
+  }));
+
+  next();
+});
 
 app.use('/', index);
 errorHandler(app);

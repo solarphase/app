@@ -5,9 +5,13 @@ var models = require('../models');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   models.Page.find({
-    where: { role: "index" }
+    where: { role: 'index' }
   }).then(function(page) {
-    res.render('index', { linkedPage: page });
+    if (page !== null) {
+      res.view.set('linkedPage', page);
+    }
+    
+    res.render('index');
   });
 });
 

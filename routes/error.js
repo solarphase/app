@@ -1,7 +1,6 @@
 module.exports = function(app) {
   app.use(function(req, res, next) {
-    // TODO: Setup linked page.
-    
+    res.view.get("linkedPage").title = "Error";
     next();
   });
 
