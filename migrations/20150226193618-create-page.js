@@ -12,10 +12,11 @@ module.exports = {
         allowNull: false,
         type: DataTypes.STRING
       },
-      activeId: {
+      identifier: {
         type: DataTypes.STRING
       },
       role: {
+        unique: true,
         type: DataTypes.STRING
       },
       content: {

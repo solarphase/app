@@ -19,6 +19,7 @@
     "sqlite3": "^3.0.5"
   },
   "devDependencies": {
-    "chokidar": "^1.0.0-rc3"
+    "chokidar": "^1.0.0-rc3",
+    "should": "^5.0.1"
   }
 }
