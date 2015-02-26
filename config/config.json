@@ -5,7 +5,8 @@
   },
   "test": {
     "dialect": "sqlite",
-    "storage": "./solarphase-test.db"
+    "storage": "./solarphase-test.db",
+    "logging": false
   },
   "production": {
     "username": "root",
