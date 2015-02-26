@@ -2,20 +2,15 @@
 
 var repl = require('repl');
 
-var app = require('../app');
-var models = require('../models');
+global.app = require('../app');
+global.models = require('../models');
 
-var replServer = repl.start({
-  prompt: 'SOLAR > ',
-  input: process.stdin,
-  output: process.stdout
+models.sequelize.sync().then(function() {
+  var replServer = repl.start({
+    prompt: 'SOLAR > ',
+    input: process.stdin,
+    output: process.stdout,
+    useGlobal: true
+  });
 });
-
-replServer.on('reset', function(context) {
-  replServer.context.app = app;
-  replServer.context.models = models;
-});
-
-replServer.context.app = app;
-replServer.context.models = models;
 
