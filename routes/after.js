@@ -1,6 +1,6 @@
 module.exports = function(app) {
   app.use(function(req, res, next) {
-    res.view.get("linkedPage").title = "Error";
+    res.view.get('linkedPage').title = "Error";
     next();
   });
 

@@ -10,19 +10,19 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-// Models.
-
-var models = require('./models');
-
 // Helper libraries.
 
 var markdownHelper = require('./lib/markdown-helper');
 var viewHelper = require('./lib/view-helper');
 
+// Route hooks.
+
+var beforeRoutes = require('./routes/before');
+var afterRoutes = require('./routes/after');
+
 // Routes.
 
 var index = require('./routes/index');
-var errorHandler = require("./routes/error");
 
 /* Bootstrapping */
 
@@ -50,16 +50,9 @@ app.use(viewHelper());
 
 // Routes.
 
-app.use(function(req, res, next) {
-  res.view.set("linkedPage", models.Page.build({
-    title: "Undefined"
-  }));
-
-  next();
-});
-
+beforeRoutes(app);
 app.use('/', index);
-errorHandler(app);
+afterRoutes(app);
 
 /* Exports */
 
