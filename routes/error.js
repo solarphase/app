@@ -1,10 +1,6 @@
 module.exports = function(app) {
   app.use(function(req, res, next) {
-    res.setViewGlobal("linkedPage", {
-      title: "Error",
-      activeId: "error",
-      content: ""
-    });
+    // TODO: Setup linked page.
     
     next();
   });
