@@ -1,0 +1,4 @@
+#!/bin/sh
+
+lessc less/main.less > public/css/main.css
+

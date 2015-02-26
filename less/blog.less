@@ -1,0 +1,43 @@
+.blog {
+  &.synopsisized {
+    article .content {
+      p:first-child { display: block; }
+      * { display: none; }
+    }
+  }
+
+  article {
+    margin-bottom: 20px;
+
+    header {
+      margin-bottom: 10px;
+
+      a {
+        color: @text-color;
+        text-decoration: none;
+        
+        &:hover {
+          color: @gray-dark;
+
+          .glyphicon-link { color: @link-color; }
+        }
+
+        .glyphicon-link {
+          color: @gray-light;
+          font-size: 0.6em;
+        }
+      }
+
+      h1, h2, h3, h4, h5, h6 { margin-bottom: 2px; }
+
+      p {
+        &:extend(.text-muted);
+
+        strong { color: @text-color; }
+      }
+    }
+
+    .content { font-size: 1.2em; }
+  }
+}
+

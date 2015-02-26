@@ -1,0 +1,58 @@
+.website-nav {
+  .logo {
+    width: 100%;
+    margin-bottom: 15px;
+
+    &:hover { opacity: 0.8; }
+  }
+
+  nav {
+    a {
+      color: @gray-light;
+
+      &:hover {
+        color: @gray;
+        text-decoration: none;
+      }
+    }
+
+    ul {
+      font-size: 1.3em;
+      list-style-type: none;
+      margin: 0 0 0 10px;
+      padding: 0;
+
+      ul {
+        font-size: 0.8em;
+        margin-top: 15px;
+      }
+    }
+
+    li {
+      margin-bottom: 15px;
+
+      &.active > a {
+        font-weight: bold;
+        color: @gray;
+      }
+    }
+  }
+}
+
+.website-pagination {
+  &:extend(.row);
+
+  hr {
+    margin: 0 0 10px;
+  }
+
+  a {
+    margin: 0 5px;
+
+    &.active {
+      color: @text-color;
+      font-weight: bold;
+    }
+  }
+}
+

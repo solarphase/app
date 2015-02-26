@@ -1,0 +1,12 @@
+*.swp
+
+public/css/
+!public/css/.gitkeep
+
+public/fonts/
+public/js/vendor/
+less/vendor/
+
+bower_components/
+node_modules/
+

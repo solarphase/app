@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Vendor directories.
+
+rm -rf public/js/vendor/
+mkdir public/js/vendor/
+
+rm -rf public/fonts/
+mkdir public/fonts/
+
+rm -rf less/vendor/
+mkdir less/vendor/
+
+# jQuery
+
+cp bower_components/jquery/dist/jquery.js public/js/vendor/jquery.js
+
+# Bootstrap
+
+cp -r bower_components/bootstrap/dist/fonts/* public/fonts/
+cp bower_components/bootstrap/dist/js/bootstrap.js public/js/vendor/bootstrap.js
+cp -r bower_components/bootstrap/less/ less/vendor/bootstrap/
+
+# Source Sans Pro
+
+cp -r bower_components/fontface-source-sans-pro/fonts/* public/fonts/
+cp -r bower_components/fontface-source-sans-pro/less/ less/vendor/source-sans-pro/
+

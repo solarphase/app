@@ -1,0 +1,33 @@
+var exec = require('child_process').exec;
+var chokidar = require('chokidar');
+
+chokidar.watch(['less/', '!less/vendor/'], { persistent: true })
+  .on('ready', function () {
+    console.log('Initial scan finished.');
+    less();
+  })
+  .on('add', function (path) {
+    console.log('File added: ', path);
+  })
+  .on('change', function (path) {
+    console.log('File changed: ', path);
+    less();
+  })
+  .on('unlink', function (path) {
+    console.log('File removed: ', path);
+    less();
+  });
+
+/* Watch Functions */
+
+function less() {
+  exec('./bin/less', function (err, stdout, stderr) {
+    if (stderr) {
+      console.log(stderr);
+      return;
+    }
+
+    console.log('LESS stylesheets have successfully been compiled.');
+  });
+}
+
