@@ -1,3 +1,5 @@
+'use strict';
+
 /* Requires */
 
 // Third-party libraries.

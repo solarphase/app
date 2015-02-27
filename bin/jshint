@@ -1,4 +1,5 @@
 #!/bin/sh
 
-jshint **/*.js --exclude-path=.gitignore
+./node_modules/jshint/bin/jshint *.js --exclude-path=.gitignore
+./node_modules/jshint/bin/jshint **/*.js --exclude-path=.gitignore
 

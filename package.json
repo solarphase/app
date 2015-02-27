@@ -21,6 +21,9 @@
   },
   "devDependencies": {
     "chokidar": "^1.0.0-rc3",
+    "jshint": "^2.6.0",
+    "less": "^2.4.0",
+    "mocha": "^2.1.0",
     "should": "^5.0.1"
   }
 }
