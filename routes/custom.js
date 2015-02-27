@@ -6,15 +6,9 @@ var express = require('express');
 var router = express.Router();
 var models = require('../models');
 
-function traverseNavigationParentsFor(id, callback) {
+function traverseNavigationParentsFor(page, callback) {
   return new BPromise(function(resolve, reject) {
-    models.NavigationItem.find({ where: { identifier: id } })
-      .then(function(item) {
-        traverseNavigationParent(item, callback, resolve);
-      })
-      .catch(function(e) {
-        reject(e);
-      });
+    traverseNavigationParent(page.values.NavigationItem, callback, resolve);
   });
 }
 
@@ -29,17 +23,18 @@ function traverseNavigationParent(item, callback, resolve) {
   });
 }
 
-router.get('/:identifier', function(req, res, next) {
+router.get('*', function(req, res, next) {
   models.Page.find({
-    where: { identifier: req.params.identifier }
+    where: {url: req.path},
+    include: [models.NavigationItem]
   }).then(function(page) {
     if (page === null) {
       return next();
     }
 
-    res.view.get('active').push(page.identifier);
-    traverseNavigationParentsFor(page.identifier, function(parent) {
-      res.view.get('active').push(parent.identifier);
+    res.view.get('active').push(page.values.NavigationItem.id);
+    traverseNavigationParentsFor(page, function(parent) {
+      res.view.get('active').push(parent.id);
     }).then(function() {
       res.view.set('linkedPage', page);
       res.render('index');

@@ -7,8 +7,8 @@ module.exports = function(app) {
   app.use(function(req, res, next) {
     models.NavigationItem.findAll({
       include: [
-        { model: models.NavigationItem, as: 'children' },
-        { model: models.NavigationItem, as: 'parent' }
+        { model: models.NavigationItem, as: 'Children' },
+        { model: models.NavigationItem, as: 'Parent' }
       ]
     }).then(function(items) {
       res.view.set('navigation', items);

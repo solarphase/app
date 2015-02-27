@@ -5,23 +5,41 @@ var models = require('../models');
 models.sequelize.sync({ force: true }).then(function() {
   models.Page.create({
     title: 'Home',
-    identifier: 'home',
     role: 'index',
     content: '# Hello World\r\nWelcome to the website.'
+  }).then(function(page) {
+    models.NavigationItem.create({
+      title: 'Home',
+      url: '/'
+    }).then(function(item) {
+      item.setPage(page);
+    }); 
   });
 
   models.Page.create({
     title: 'Test',
-    identifier: 'test',
+    url: '/test',
     content: '# Test\r\nWow, it works.'
+  }).then(function(page) {
+    models.NavigationItem.create({
+      title: 'Test',
+      url: '/test',
+      ParentId: 1
+    }).then(function(item) {
+      item.setPage(page);
+    });
   });
 
-  models.NavigationItem.create({
-    title: 'Home',
-    identifier: 'home',
-    url: '/'
-  }).then(function(item) {
-    models.NavigationItem.create({title:'Test',identifier:'test',url:'/test'})
-      .then(function(child) { item.addChild(child); });
+  models.Page.create({
+    title: 'Test 2',
+    url: '/test2',
+    content: '# Test2\r\nWow, it probably works.'
+  }).then(function(page) {
+    models.NavigationItem.create({
+      title: 'Test 2',
+      url: '/test2',
+    }).then(function(item) {
+      item.setPage(page);
+    });
   });
 });
