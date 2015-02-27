@@ -6,6 +6,12 @@
 
 <nav>
   <ul>
+    <% for (var i = 0; i < globals.navigation.length; i++) { %>
+      <% var item = globals.navigation[i].values; %>
+      <% if (item.parent) continue; %>
+      <%- partial('website/navigation-item', {item: item}); %>
+    <% } %>
+<!--
     <li class="active">
       <a href="/">Home</a>
       <ul>
@@ -14,6 +20,7 @@
         <li><a href="#">Child Item 3</a></li>
       </ul>
     </li>
+-->
   </ul>
 </nav>
 

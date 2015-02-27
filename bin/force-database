@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+
+var models = require('../models');
+
+models.sequelize.sync({ force: true }).then(function() {
+  models.Page.create({
+    title: 'Home',
+    identifier: 'home',
+    role: 'index',
+    content: '# Hello World\r\nWelcome to the website.'
+  });
+
+  models.Page.create({
+    title: 'Test',
+    identifier: 'test',
+    content: '# Test\r\nWow, it works.'
+  });
+
+  models.NavigationItem.create({
+    title: 'Home',
+    identifier: 'home',
+    url: '/'
+  }).then(function(item) {
+    models.NavigationItem.create({title:'Test',identifier:'test',url:'/test'})
+      .then(function(child) { item.addChild(child); });
+  });
+});

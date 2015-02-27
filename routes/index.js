@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
     where: { role: 'index' }
   }).then(function(page) {
     if (page !== null) {
+      res.view.get('active').push(page.identifier);
       res.view.set('linkedPage', page);
     } else {
       return next(new Error('No page with the role of index was found!'));

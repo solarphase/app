@@ -1,0 +1,12 @@
+<% var active = globals.active.indexOf(item.identifier) > -1; %>
+<li class="<%= active ? 'active' : '' %>">
+  <a href="<%= item.url %>"><%= item.title %></a>
+  <% if (active && item.children) { %>
+    <ul>
+      <% for (var i = 0; i < item.children.length; i++) { %>
+        <%- partial('website/navigation-item', {item:item.children[i].values}) %>
+      <% } %>
+    </ul>
+  <% } %>
+</li>
+
