@@ -16,6 +16,7 @@ function traverseNavigationParent(item, callback, resolve) {
   item.getParent().then(function(parent) {
     if (parent === null) {
       resolve();
+      return;
     }
     
     callback(parent);
@@ -32,7 +33,7 @@ router.get('*', function(req, res, next) {
       return next();
     }
 
-    res.view.get('active').push(page.values.NavigationItem.id);
+    res.view.get('active').push(page.NavigationItem.id);
     traverseNavigationParentsFor(page, function(parent) {
       res.view.get('active').push(parent.id);
     }).then(function() {

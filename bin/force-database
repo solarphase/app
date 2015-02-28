@@ -5,16 +5,17 @@ var models = require('../models');
 models.sequelize.sync({ force: true }).then(function() {
   models.Page.create({
     title: 'Home',
+    url: '/',
     role: 'index',
     content: '# Hello World\r\nWelcome to the website.'
   }).then(function(page) {
     models.NavigationItem.create({
-      title: 'Home',
-      url: '/'
+      title: 'Home'
     }).then(function(item) {
       item.setPage(page);
     }); 
   });
+
 
   models.Page.create({
     title: 'Test',
@@ -23,7 +24,6 @@ models.sequelize.sync({ force: true }).then(function() {
   }).then(function(page) {
     models.NavigationItem.create({
       title: 'Test',
-      url: '/test',
       ParentId: 1
     }).then(function(item) {
       item.setPage(page);
@@ -36,10 +36,10 @@ models.sequelize.sync({ force: true }).then(function() {
     content: '# Test2\r\nWow, it probably works.'
   }).then(function(page) {
     models.NavigationItem.create({
-      title: 'Test 2',
-      url: '/test2',
+      title: 'Test 2'
     }).then(function(item) {
       item.setPage(page);
     });
   });
 });
+
