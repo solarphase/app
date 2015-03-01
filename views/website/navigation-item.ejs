@@ -1,6 +1,6 @@
 <% var active = globals.active.indexOf(item.id) > -1; %>
 <li class="<%= active ? 'active' : '' %>">
-  <a href="<%= item.url || item.Page.url %>"><%= item.title %></a>
+  <a href="<%= item.url %>"><%= item.title %></a>
   <% if (active && item.Children) { %>
     <ul>
       <% for (var i = 0; i < item.Children.length; i++) { %>

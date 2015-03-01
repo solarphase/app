@@ -10,7 +10,15 @@ describe('NavigationItem', function() {
     item.should.have.property('title');
   });
 
-  it('should have a url property', function() {
-    item.should.have.property('url');
+  describe('#url', function() {
+    it('should be a property', function() {
+      item.should.have.property('url');
+    });
+
+    it('should fall back to the page url if not defined', function() {
+      item.url = null;
+      item.Page = { url: 'foo' };
+      item.url.should.equal('foo');
+    });
   });
 });
