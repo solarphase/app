@@ -3,6 +3,10 @@
 module.exports = function(sequelize, DataTypes) {
   var NavigationItem = sequelize.define("NavigationItem", {
     title: DataTypes.STRING,
+    order: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
     url: {
       type: DataTypes.STRING,
       get: function() {

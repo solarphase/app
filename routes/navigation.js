@@ -32,6 +32,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   models.NavigationItem.create({
     title: req.body.title,
+    order: req.body.order || null,
     url: req.body.url || null,
     ParentId: req.body.parentId || null,
     PageId: req.body.pageId || null
@@ -78,6 +79,7 @@ router.put('/:id', function(req, res, next) {
 
     item.updateAttributes({
       title: req.body.title,
+      order: req.body.order || null,
       url: req.body.url || null,
       ParentId: req.body.parentId || null,
       PageId: req.body.pageId || null
