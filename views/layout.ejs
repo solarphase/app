@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= globals.linkedPage.title %> | SolarPhase</title>
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
   <% include author/navigation %>
@@ -15,6 +15,7 @@
         <% include website/navigation %>
       </nav>
       <div class="col-xs-9">
+        <% include website/flash-message %>
         <%- body %>
       </div>
     </div>

@@ -1,0 +1,39 @@
+<h1>Pages</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>title</th>
+      <th>url</th>
+      <th class="text-right">
+        <a class="btn btn-sm btn-primary" href="/pages/new">
+          <span class="glyphicon glyphicon-file"></span>
+        </a>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% pages.forEach(function(page) { %>
+      <tr>
+        <td><%= page.id %></td>
+        <td><%= page.title %></td>
+        <td><%= page.url %></td>
+        <td class="text-right">
+          <a href="<%= page.url %>" class="btn btn-sm btn-default">
+            <span class="glyphicon glyphicon-eye-open"></span>
+          </a>
+          <a href="/pages/<%= page.id %>/edit" class="btn btn-sm btn-primary">
+            <span class="glyphicon glyphicon-edit"></span>
+          </a>
+          <form action="/pages/<%= page.id %>" method="POST" class="inline">
+            <input type="hidden" name="_method" value="DELETE"/>
+            <button class="btn btn-sm btn-danger">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </form>
+        </td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+
