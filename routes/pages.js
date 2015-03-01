@@ -15,16 +15,16 @@ router.get('*', function(req, res, next) {
       return next();
     }
 
-    res.view.set('linkedPage', page);
+    res.locals.title = page.title;
     if (!page.NavigationItem) {
-      return res.render('pages/view');
+      return res.render('pages/view', {page:page});
     }
 
-    res.view.get('active').push(page.NavigationItem.id);
+    res.locals.active.push(page.NavigationItem.id);
     navigationHelper.traverseUp(page.NavigationItem, function(parent) {
-      res.view.get('active').push(parent.id);
+      res.locals.active.push(parent.id);
     }).then(function() {
-      res.render('pages/view');
+      res.render('pages/view', {page:page});
     });
   });
 });
@@ -32,8 +32,7 @@ router.get('*', function(req, res, next) {
 /* GET list pages */
 router.get('/pages', function(req, res, next) {
   models.Page.findAll().then(function(pages) {
-    res.view.get('linkedPage').title = 'Pages';
-    res.render('pages/index', {pages: pages});
+    res.render('pages/index', {title: 'Pages', pages: pages});
   });
 });
 
@@ -56,8 +55,7 @@ router.post('/pages', function(req, res, next) {
 
 /* GET new page */
 router.get('/pages/new', function(req, res, next) {
-  res.view.get('linkedPage').title = 'New Page';
-  res.render('pages/edit', {page:models.Page.build({})});
+  res.render('pages/edit', {title: 'New Page', page:models.Page.build({})});
 });
 
 /* GET edit page */
@@ -69,8 +67,7 @@ router.get('/pages/:id/edit', function(req, res, next) {
       return next();
     }
 
-    res.view.get('linkedPage').title = 'Edit Page';
-    res.render('pages/edit', {page: page});
+    res.render('pages/edit', {title: 'Edit Page', page: page});
   });
 });
 

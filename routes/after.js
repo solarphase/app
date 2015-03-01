@@ -15,9 +15,9 @@ module.exports = function(app) {
   }
 
   app.use(function(err, req, res, next) {
-    res.view.get('linkedPage').title = "Error";
     res.status(err.status || 500);
     res.render('error', {
+      title: 'Error',
       status: res.statusCode,
       message: err.message,
       error: res.locals.error || ""

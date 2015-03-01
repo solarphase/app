@@ -18,7 +18,6 @@ var flash = require('express-flash');
 // Helper libraries.
 
 var markdownHelper = require('./lib/markdown-helper');
-var viewHelper = require('./lib/view-helper');
 
 // Route hooks.
 
@@ -63,7 +62,6 @@ app.use(flash());
 // Helpers.
 
 app.use(markdownHelper());
-app.use(viewHelper());
 
 // Routes.
 

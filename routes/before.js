@@ -12,18 +12,10 @@ module.exports = function(app) {
         models.Page
       ]
     }).then(function(items) {
-      res.view.set('navigation', items);
-      res.view.set('active', []);
+      res.locals.navigation = items;
+      res.locals.active = [];
       next();
     });
-  });
-
-  // Setup linkedPage.
-  app.use(function(req, res, next) {
-    res.view.set('linkedPage', models.Page.build({
-      title: 'Undefined'
-    }));
-    next();
   });
 };
 

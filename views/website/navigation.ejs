@@ -6,8 +6,8 @@
 
 <nav>
   <ul>
-    <% for (var i = 0; i < globals.navigation.length; i++) { %>
-      <% var item = globals.navigation[i]; %>
+    <% for (var i = 0; i < navigation.length; i++) { %>
+      <% var item = navigation[i]; %>
       <% if (item.Parent) continue; %>
       <%- partial('website/navigation-item', {item: item}); %>
     <% } %>

@@ -25,8 +25,7 @@ router.all('*', function(req, res, next) {
 
 /* GET list navigation items */
 router.get('/', function(req, res, next) {
-  res.view.get('linkedPage').title = 'Navigation';
-  res.render('navigation/index', {items:res.locals.navigationItems});
+  res.render('navigation/index', {title: 'Navigation', items:res.locals.navigationItems});
 });
 
 /* POST create navigation item */
@@ -49,8 +48,7 @@ router.post('/', function(req, res, next) {
 
 /* GET new navigation item */
 router.get('/new', function(req, res, next) {
-  res.view.get('linkedPage').title = 'New Navigation Item';
-  res.render('navigation/edit', {item:models.NavigationItem.build({})});
+  res.render('navigation/edit', {title: 'New Navigation Item', item:models.NavigationItem.build({})});
 });
 
 /* GET edit navigation item */
@@ -67,8 +65,7 @@ router.get('/:id/edit', function(req, res, next) {
       return next();
     }
 
-    res.view.get('linkedPage').title = 'Edit Navigation Item';
-    res.render('navigation/edit', {item:item});
+    res.render('navigation/edit', {title: 'Edit Navigation Item', item:item});
   });
 });
 
