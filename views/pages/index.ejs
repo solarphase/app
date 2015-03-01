@@ -2,9 +2,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th>id</th>
-      <th>title</th>
-      <th>url</th>
+      <th>Title</th>
+      <th>URL</th>
       <th class="text-right">
         <a class="btn btn-sm btn-primary" title="New Page" href="/pages/new">
           <span class="glyphicon glyphicon-file"></span>
@@ -15,7 +14,6 @@
   <tbody>
     <% pages.forEach(function(page) { %>
       <tr>
-        <td><%= page.id %></td>
         <td><%= page.title %></td>
         <td><%= page.url %></td>
         <td class="text-right">
