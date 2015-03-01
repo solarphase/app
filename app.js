@@ -24,8 +24,7 @@ var afterRoutes = require('./routes/after');
 
 // Routes.
 
-var index = require('./routes/index');
-var custom = require('./routes/custom');
+var website = require('./routes/website');
 
 /* Bootstrapping */
 
@@ -54,8 +53,7 @@ app.use(viewHelper());
 // Routes.
 
 beforeRoutes(app);
-app.use('/', index);
-app.use('/', custom);
+app.use('/', website);
 afterRoutes(app);
 
 /* Exports */
