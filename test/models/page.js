@@ -17,27 +17,5 @@ describe('Page', function() {
   it('should have a content property', function() {
     page.should.have.property('content');
   });
-
-  describe('#role', function() {
-    it('should be a property', function() {
-      page.should.have.property('role');
-    });
-
-    it('should be unique', function(done) {
-      page.role = 'test';
-      page.save().then(function() {
-        models.Page.create({
-          title: 'Something else',
-          role: 'test'
-        }).then(function() {
-          done(new Error('Two models with same role was created!'));
-        }).catch(function() {
-          done();
-        });
-      }).catch(function(e) {
-        done(e);
-      });
-    });
-  });
 });
 
