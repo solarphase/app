@@ -6,7 +6,7 @@
       <th>title</th>
       <th>url</th>
       <th class="text-right">
-        <a class="btn btn-sm btn-primary" href="/pages/new">
+        <a class="btn btn-sm btn-primary" title="New Page" href="/pages/new">
           <span class="glyphicon glyphicon-file"></span>
         </a>
       </th>
@@ -19,15 +19,15 @@
         <td><%= page.title %></td>
         <td><%= page.url %></td>
         <td class="text-right">
-          <a href="<%= page.url %>" class="btn btn-sm btn-default">
+          <a href="<%= page.url %>" title="View Page" class="btn btn-sm btn-default">
             <span class="glyphicon glyphicon-eye-open"></span>
           </a>
-          <a href="/pages/<%= page.id %>/edit" class="btn btn-sm btn-primary">
+          <a href="/pages/<%= page.id %>/edit" title="Edit Page" class="btn btn-sm btn-primary">
             <span class="glyphicon glyphicon-edit"></span>
           </a>
           <form action="/pages/<%= page.id %>" method="POST" class="inline">
             <input type="hidden" name="_method" value="DELETE"/>
-            <button class="btn btn-sm btn-danger">
+            <button class="btn btn-sm btn-danger" title="Delete Page">
               <span class="glyphicon glyphicon-trash"></span>
             </button>
           </form>
