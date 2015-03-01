@@ -36,7 +36,7 @@ module.exports = function(router) {
         res.view.get('active').push(parent.id);
       }).then(function() {
         res.view.set('linkedPage', page);
-        res.render('index');
+        res.render('website/index');
       });
     });
   });

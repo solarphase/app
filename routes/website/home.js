@@ -16,7 +16,7 @@ module.exports = function(router) {
         return next(new Error('No page with the role of index was found!'));
       }
       
-      res.render('index');
+      res.render('website/index');
     });
   });
 
