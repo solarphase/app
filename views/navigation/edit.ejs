@@ -26,12 +26,12 @@
     <label for="navigation-parent">Parent</label>
     <select id="navigation-parent" class="form-control" name="parentId">
       <option value=""></option>
+      <% var hasChildren = item.Children && item.Children.length > 0; %>
       <% navigationItems.forEach(function(navItem) { %>
-        <% if (navItem.id !== item.id && !item.Children.length) { %>
+        <% if (navItem.id !== item.id && !hasChildren) { %>
+          <% var isParent = item.Parent && item.Parent.id == navItem.id; %>
           <option value="<%= navItem.id %>"
-            <% if (item.Parent && item.Parent.id == navItem.id) { %>
-              selected
-            <% } %>>
+            <%= isParent ? 'selected' : '' %>>
             <%= navItem.title %>
           </option>
         <% } %>
