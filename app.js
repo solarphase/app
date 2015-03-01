@@ -28,6 +28,7 @@ var afterRoutes = require('./routes/after');
 // Routes.
 
 var pages = require('./routes/pages');
+var navigation = require('./routes/navigation');
 
 /* Bootstrapping */
 
@@ -68,6 +69,7 @@ app.use(viewHelper());
 
 beforeRoutes(app);
 app.use('/', pages);
+app.use('/navigation', navigation);
 afterRoutes(app);
 
 /* Exports */

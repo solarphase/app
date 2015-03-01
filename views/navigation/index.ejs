@@ -1,0 +1,53 @@
+<h1>Navigation</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Url</th>
+      <th>Parent</th>
+      <th>Page</th>
+      <th class="text-right">
+        <a href="/navigation/new"
+          class="btn btn-sm btn-primary"
+          title="New Navigation Item">
+          <span class="glyphicon glyphicon-file"></span>
+        </a>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% items.forEach(function(item) { %>
+      <tr>
+        <td><%= item.title %></td>
+        <td><%= item.url %></td>
+        <td>
+          <% if (item.Parent) { %>
+            <a href="/navigation/<%= item.Parent.id %>/edit">
+              <%= item.Parent.title %>
+            </a>
+          <% } %>
+        </td>
+        <td>
+          <% if (item.Page) { %>
+            <a href="/pages/<%= item.Page.id %>/edit">
+              <%= item.Page.title %>
+            </a>
+          <% } %>
+        </td>
+        <td class="text-right">
+          <a href="/navigation/<%= item.id %>/edit"
+            class="btn btn-sm btn-primary"
+            title="Edit Navigation Item">
+            <span class="glyphicon glyphicon-edit"></span>
+          </a>
+          <form class="inline" action="/navigation/<%= item.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="btn btn-sm btn-danger" title="Delete Navigation Item">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </form>
+        </td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
