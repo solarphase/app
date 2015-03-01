@@ -26,8 +26,8 @@
     <label for="navigation-parent">Parent</label>
     <select id="navigation-parent" class="form-control" name="parentId">
       <option value=""></option>
-      <% globals.navigation.forEach(function(navItem) { %>
-        <% if (navItem.id !== item.id) { %>
+      <% navigationItems.forEach(function(navItem) { %>
+        <% if (navItem.id !== item.id && !item.Children.length) { %>
           <option value="<%= navItem.id %>"
             <% if (item.Parent && item.Parent.id == navItem.id) { %>
               selected

@@ -11,24 +11,29 @@ router.all('*', function(req, res, next) {
   });
 });
 
-/* GET list navigation items */
-router.get('/', function(req, res, next) {
+router.all('*', function(req, res, next) {
   models.NavigationItem.findAll({
     include: [
       { model: models.NavigationItem, as: 'Parent' },
       models.Page
     ]
   }).then(function(items) {
-    res.view.get('linkedPage').title = 'Navigation';
-    res.render('navigation/index', {items:items});
+    res.locals.navigationItems = items;
+    next();
   });
+});
+
+/* GET list navigation items */
+router.get('/', function(req, res, next) {
+  res.view.get('linkedPage').title = 'Navigation';
+  res.render('navigation/index', {items:res.locals.navigationItems});
 });
 
 /* POST create navigation item */
 router.post('/', function(req, res, next) {
   models.NavigationItem.create({
     title: req.body.title,
-    url: req.body.url,
+    url: req.body.url || null,
     ParentId: req.body.parentId || null,
     PageId: req.body.pageId || null
   }).then(function(item) {
@@ -54,6 +59,7 @@ router.get('/:id/edit', function(req, res, next) {
     where: { id: req.params.id },
     include: [
       { model: models.NavigationItem, as: 'Parent' },
+      { model: models.NavigationItem, as: 'Children' },
       models.Page
     ]
   }).then(function(item) {
