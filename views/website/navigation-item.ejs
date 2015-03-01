@@ -3,9 +3,9 @@
   <a href="<%= item.url %>"><%= item.title %></a>
   <% if (isActive && item.Children) { %>
     <ul>
-      <% for (var i = 0; i < item.Children.length; i++) { %>
-        <%- partial('website/navigation-item', {item:item.Children[i]}) %>
-      <% } %>
+      <% item.Children.forEach(function(child) { %>
+        <%- partial('website/navigation-item', {item:child}) %>
+      <% }); %>
     </ul>
   <% } %>
 </li>
