@@ -1,6 +1,7 @@
 {
   "name": "solarphase",
   "version": "0.0.0",
+  "license": "ISC",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"

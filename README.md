@@ -3,6 +3,11 @@
 SolarPhase is the personal portfolio and blog of developer __Kimmy Andersson__
 and here you can find the complete source-code that powers the website.
 
+## License
+
+This piece of software is licensed under the ISC license which you can read in
+the accompanying LICENSE file.
+
 ## Installation
 
 ### Requirements
