@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
     include: [models.NavigationItem]
   }).then(function(page) {
     if (page !== null) {
-      res.view.get('active').push(page.values.NavigationItem.id);
+      res.view.get('active').push(page.NavigationItem.id);
       res.view.set('linkedPage', page);
     } else {
       return next(new Error('No page with the role of index was found!'));
