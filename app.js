@@ -56,7 +56,12 @@ app.use(methodOverride(function(req, res) {
   }
 }));
 
-app.use(session({ secret: 'TODO', maxAge: null }));
+app.use(session({
+  secret: 'TODO',
+  maxAge: null,
+  resave: false,
+  saveUninitialized: false
+}));
 app.use(flash());
 
 // Helpers.

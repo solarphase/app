@@ -1,7 +1,8 @@
 {
   "development": {
     "dialect": "sqlite",
-    "storage": "./solarphase-dev.db"
+    "storage": "./solarphase-dev.db",
+    "logging": false
   },
   "test": {
     "dialect": "sqlite",
