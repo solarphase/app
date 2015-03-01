@@ -10,10 +10,6 @@ describe('NavigationItem', function() {
     item.should.have.property('title');
   });
 
-  it('should have a identifier property', function() {
-    item.should.have.property('identifier');
-  });
-
   it('should have a url property', function() {
     item.should.have.property('url');
   });

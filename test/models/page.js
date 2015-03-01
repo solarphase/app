@@ -10,10 +10,6 @@ describe('Page', function() {
     page.should.have.property('title');
   });
 
-  it('should have a identifier property', function() {
-    page.should.have.property('identifier');
-  });
-
   it('should have a content property', function() {
     page.should.have.property('content');
   });
