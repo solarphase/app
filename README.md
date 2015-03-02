@@ -15,95 +15,74 @@ the accompanying LICENSE file.
  * Node.js
  * NPM
  * Bower
- * A posix-compliant OS. (Linux, OSX, etc)
+ * A POSIX-compliant OS. (Linux, OSX, etc)
 
 ### Steps
 
 Start out by cloning the repository into a directory on your local drive.
 
     $ git clone https://github.com/solarphase/app solarphase-app
+    $ cd solarphase-app
 
-Next, cd into the directory and run the following commands from the project root
-to fetch the third-party components required by the app.
+Next, you will have to install the third-party libraries and components that
+the application depends on.
 
     $ npm install
     $ bower install
 
-Now you will need to copy the third-party components installed by bower into an
-accessible location. This is automated by a script so all you have to do is run
-the following command from the project root.
+Then you will have to copy the dependencies into the project by running one of
+the supplied scripts.
 
     $ ./bin/vendor
 
-You will also have to compile the LESS stylesheets and populate the database
-by running the following commands.
+You will also have to compile the LESS stylesheets and populate the database.
 
     $ ./bin/less
     $ ./bin/force-database
 
-And that's it. The application should now be ready for development/running.
+That's it! The application is now ready to run.
 
-## Common Operations
+## Scripts
 
-### Watch
+### bin/watch
 
-When developing, running the LESS compiler every time you've made a change can
-be an annoying chore. That's why I've implemented a watch script that automates
-this process for you. It will detect any write performed in the less directory
-and will automatically run the LESS compiler.
+This script looks at the `less/` directory and automatically compiles the
+stylesheets whenever a file is written.
 
-    $ ./bin/watch
+### bin/less
 
-### LESS
+This script compiles `less/main.less` into `public/css/main.css`.
 
-The stylesheets of the application are defined in LESS, meaning you will have to
-compile the stylesheets into CSS.
+### bin/jshint
 
-    $ ./bin/less
+This script takes a look at all JavaScript files in the project and reports back
+any potential problems and syntax errors.
 
-### JavaScript Hinting
+### bin/test
 
-Because JavaScript doesn't have any form of preprocessing or compiler, hinting
-is an essential part in the toolchain to keep the code as correct as possible.
+This script runs the unit-tests of the application and reports back the results.
 
-    $ ./bin/jshint
+### bin/console
 
-### Unit Tests
+This script bootstraps the application and provides a console interface to so
+you can interact with the application programmatically and in real-time.
 
-Most relevant moving parts of the app are unit-tested to ensure functionality is
-as expected.
+### bin/vendor
 
-    $ ./bin/test
+This script copies all necessary third-party components into the project.
 
-### Console
+### bin/force-database
 
-To interact with the models without having to use the website, I have created a
-REPL command-line application that automatically bootstraps the app for you and
-gives you a command-line JavaScript interface to interact with the app.
+This script forcefully recreates the database and populates it with example some
+example data.
 
-    $ ./bin/console
+### bin/www
 
-### Vendor Components
+This script bootstraps the application and starts it up as a HTTP service.
 
-The app relies on a number of third-party (or vendor) components to function.
-Bower components are usually required by the client and need to be copied into
-the project structure to be enabled.
+#### Debug
 
-    $ ./bin/vendor
-
-### Populating the Database
-
-The database by default has no data when you run the application for the first
-time. You can populate the database with test data by running the supplied
-script.
-
-Note: This will clear the current database and repopulate it with the test data.
-
-    $ ./bin/force-database
-
-### Running the App
-
-The app can be started by running the supplied `www` script.
+Debug mode is enabled by running the script like described below:
 
     $ DEBUG=solarphase ./bin/www
 
