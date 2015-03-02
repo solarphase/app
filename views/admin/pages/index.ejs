@@ -31,12 +31,9 @@
           <a href="/admin/pages/<%= page.id %>/edit" title="Edit Page" class="btn btn-sm btn-primary">
             <span class="glyphicon glyphicon-edit"></span>
           </a>
-          <form action="/admin/pages/<%= page.id %>" method="POST" class="inline">
-            <input type="hidden" name="_method" value="DELETE"/>
-            <button class="btn btn-sm btn-danger" title="Delete Page">
-              <span class="glyphicon glyphicon-trash"></span>
-            </button>
-          </form>
+          <a href="/admin/pages/<%= page.id %>/delete" title="Delete Page" class="btn btn-sm btn-danger">
+            <span class="glyphicon glyphicon-trash"></span>
+          </a>
         </td>
       </tr>
     <% }); %>

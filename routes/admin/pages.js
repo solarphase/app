@@ -77,6 +77,16 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
+router.get('/:id/delete', function(req, res, next) {
+  models.Page.find(req.params.id).then(function(page) {
+    if (!page) {
+      return next();
+    }
+
+    res.render('admin/pages/delete', {title: 'Delete Page', page:page});
+  });
+});
+
 /* DELETE delete page */
 router.delete('/:id', function(req, res, next) {
   models.Page.find(req.params.id).then(function(page) {
