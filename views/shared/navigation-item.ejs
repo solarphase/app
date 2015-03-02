@@ -4,7 +4,7 @@
   <% if (isActive && item.Children) { %>
     <ul>
       <% item.Children.forEach(function(child) { %>
-        <%- partial('website/navigation-item', {item:child}) %>
+        <%- partial('shared/navigation-item', {item:child}) %>
       <% }); %>
     </ul>
   <% } %>
