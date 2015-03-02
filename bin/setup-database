@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+var models = require('../models');
+
+models.sequelize.sync({ force: true }).then(function() {
+  models.Page.create({
+    title: 'Home',
+    url: '/',
+    role: 'index',
+    content: '# Hello World\r\nWelcome to the website.'
+  }).then(function(page) {
+    models.NavigationItem.create({
+      title: 'Home'
+    }).then(function(item) {
+      item.setPage(page);
+    }); 
+  });
+});
+

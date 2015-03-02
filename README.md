@@ -39,7 +39,7 @@ the supplied scripts.
 You will also have to compile the LESS stylesheets and populate the database.
 
     $ ./bin/less
-    $ ./bin/force-database
+    $ ./bin/setup-database
 
 That's it! The application is now ready to run.
 
@@ -72,10 +72,10 @@ you can interact with the application programmatically and in real-time.
 
 This script copies all necessary third-party components into the project.
 
-### bin/force-database
+### bin/setup-database
 
-This script forcefully recreates the database and populates it with example some
-example data.
+This script forcefully recreates the database and populates it with data to get
+the website up-and-running.
 
 ### bin/www
 
