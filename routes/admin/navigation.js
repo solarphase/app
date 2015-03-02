@@ -35,7 +35,7 @@ router.post('/', function(req, res, next) {
     title: req.body.title,
     order: req.body.order || null,
     url: req.body.url || null,
-    enabled: req.body.enabled || false,
+    enabled: !!req.body.enabled,
     ParentId: req.body.parentId || null,
     PageId: req.body.pageId || null
   }).then(function(item) {
@@ -89,7 +89,7 @@ router.put('/:id', function(req, res, next) {
       title: req.body.title,
       order: req.body.order || null,
       url: req.body.url || null,
-      enabled: req.body.enabled || false,
+      enabled: !!req.body.enabled,
       ParentId: req.body.parentId || null,
       PageId: req.body.pageId || null
     }).then(function() {

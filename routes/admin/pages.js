@@ -33,7 +33,7 @@ router.post('/', function(req, res, next) {
     title: req.body.title,
     url: req.body.url,
     content: req.body.content || null,
-    enabled: req.body.enabled || false
+    enabled: !!req.body.enabled
   }).then(function(page) {
     if (!page) {
       req.flash('danger', 'The page could not be created!');
@@ -80,7 +80,7 @@ router.put('/:id', function(req, res, next) {
       title: req.body.title,
       url: req.body.url,
       content: req.body.content || null,
-      enabled: req.body.enabled || false
+      enabled: !!req.body.enabled
     }).then(function() {
       req.flash('success', 'The page has been saved!');
       res.redirect('/admin/pages/' + req.params.id + '/edit');
