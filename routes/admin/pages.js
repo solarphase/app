@@ -13,6 +13,17 @@ router.get('/', function(req, res, next) {
   });
 });
 
+/* GET page */
+router.get('/:id', function(req, res, next) {
+  models.Page.find(req.params.id).then(function(page) {
+    if (page === null) {
+      return next();
+    }
+
+    res.render('admin/pages/view', {title: page.title, page:page});
+  });
+});
+
 /* POST create page */
 router.post('/', function(req, res, next) {
   models.Page.create({
