@@ -4,6 +4,7 @@ var express = require('express');
 var router = express.Router();
 var models = require('../../models');
 
+/* ALL fetch pages */
 router.all('*', function(req, res, next) {
   models.Page.findAll({
     include: [models.NavigationItem]
@@ -13,21 +14,19 @@ router.all('*', function(req, res, next) {
   });
 });
 
-router.all('*', function(req, res, next) {
+/* GET list navigation items */
+router.get('/', function(req, res, next) {
   models.NavigationItem.findAll({
     include: [
       { model: models.NavigationItem, as: 'Parent' },
       models.Page
     ]
   }).then(function(items) {
-    res.locals.navigationItems = items;
-    next();
+    res.render('admin/navigation/index', {
+      title: 'Navigation',
+      items: items
+    });
   });
-});
-
-/* GET list navigation items */
-router.get('/', function(req, res, next) {
-  res.render('admin/navigation/index', {title: 'Navigation', items:res.locals.navigationItems});
 });
 
 /* POST create navigation item */
@@ -51,7 +50,10 @@ router.post('/', function(req, res, next) {
 
 /* GET new navigation item */
 router.get('/new', function(req, res, next) {
-  res.render('admin/navigation/edit', {title: 'New Navigation Item', item:models.NavigationItem.build({})});
+  res.render('admin/navigation/edit', {
+    title: 'New Navigation Item',
+    item: models.NavigationItem.build({})
+  });
 });
 
 /* GET edit navigation item */
@@ -68,7 +70,10 @@ router.get('/:id/edit', function(req, res, next) {
       return next();
     }
 
-    res.render('admin/navigation/edit', {title: 'Edit Navigation Item', item:item});
+    res.render('admin/navigation/edit', {
+      title: 'Edit Navigation Item',
+      item: item
+    });
   });
 });
 
@@ -92,6 +97,7 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
+/* GET confirm navigation item delete */
 router.get('/:id/delete', function(req, res, next) {
   models.NavigationItem.find(req.params.id).then(function(item) {
     if (!item) {

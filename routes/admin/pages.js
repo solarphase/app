@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 /* GET page */
 router.get('/:id', function(req, res, next) {
   models.Page.find(req.params.id).then(function(page) {
-    if (page === null) {
+    if (!page) {
       return next();
     }
 
@@ -77,6 +77,7 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
+/* GET confirm navigation item delete */
 router.get('/:id/delete', function(req, res, next) {
   models.Page.find(req.params.id).then(function(page) {
     if (!page) {
