@@ -92,6 +92,19 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
+router.get('/:id/delete', function(req, res, next) {
+  models.NavigationItem.find(req.params.id).then(function(item) {
+    if (!item) {
+      return next();
+    }
+
+    res.render('admin/navigation/delete', {
+      title: 'Delete Navigation Item',
+      item: item
+    });
+  });
+});
+
 /* DELETE delete navigation item */
 router.delete('/:id', function(req, res, next) {
   models.NavigationItem.find(req.params.id).then(function(item) {
