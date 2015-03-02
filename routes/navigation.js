@@ -5,7 +5,9 @@ var router = express.Router();
 var models = require('../models');
 
 router.all('*', function(req, res, next) {
-  models.Page.findAll().then(function(pages) {
+  models.Page.findAll({
+    include: [models.NavigationItem]
+  }).then(function(pages) {
     res.locals.pages = pages;
     next();
   });

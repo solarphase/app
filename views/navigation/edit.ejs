@@ -53,12 +53,14 @@
     <select id="navigation-page" class="form-control" name="pageId">
       <option value=""></option>
       <% pages.forEach(function(page) { %>
-        <option value="<%= page.id %>"
-          <% if (item.Page && item.Page.id == page.id) { %>
-            selected
-          <% } %>>
-          <%= page.title %>
-        </option>
+        <% if (!page.NavigationItem || page.NavigationItem.id == item.id) { %>
+          <option value="<%= page.id %>"
+            <% if (item.Page && item.Page.id == page.id) { %>
+              selected
+            <% } %>>
+            <%= page.title %>
+          </option>
+        <% } %>
       <% }); %>
     </select>
   </div>
