@@ -2,7 +2,7 @@
 
 var express = require('express');
 var router = express.Router();
-var models = require('../models');
+var models = require('../../models');
 
 router.all('*', function(req, res, next) {
   models.Page.findAll({
@@ -27,7 +27,7 @@ router.all('*', function(req, res, next) {
 
 /* GET list navigation items */
 router.get('/', function(req, res, next) {
-  res.render('navigation/index', {title: 'Navigation', items:res.locals.navigationItems});
+  res.render('admin/navigation/index', {title: 'Navigation', items:res.locals.navigationItems});
 });
 
 /* POST create navigation item */
@@ -41,17 +41,17 @@ router.post('/', function(req, res, next) {
   }).then(function(item) {
     if (!item) {
       req.flash('danger', 'The navigation item could not be created!');
-      return res.redirect('/navigation');
+      return res.redirect('/admin/navigation');
     }
 
     req.flash('success', 'The navigation item has been created!');
-    res.redirect('/navigation/' + item.id + '/edit');
+    res.redirect('/admin/navigation/' + item.id + '/edit');
   });
 });
 
 /* GET new navigation item */
 router.get('/new', function(req, res, next) {
-  res.render('navigation/edit', {title: 'New Navigation Item', item:models.NavigationItem.build({})});
+  res.render('admin/navigation/edit', {title: 'New Navigation Item', item:models.NavigationItem.build({})});
 });
 
 /* GET edit navigation item */
@@ -68,7 +68,7 @@ router.get('/:id/edit', function(req, res, next) {
       return next();
     }
 
-    res.render('navigation/edit', {title: 'Edit Navigation Item', item:item});
+    res.render('admin/navigation/edit', {title: 'Edit Navigation Item', item:item});
   });
 });
 
@@ -87,7 +87,7 @@ router.put('/:id', function(req, res, next) {
       PageId: req.body.pageId || null
     }).then(function() {
       req.flash('success', 'The navigation item has been saved!');
-      res.redirect('/navigation/' + req.params.id + '/edit');
+      res.redirect('/admin/navigation/' + req.params.id + '/edit');
     });
   });
 });
@@ -101,7 +101,7 @@ router.delete('/:id', function(req, res, next) {
 
     item.destroy().then(function() {
       req.flash('success', 'The navigation item has been deleted!');
-      res.redirect('/navigation');
+      res.redirect('/admin/navigation');
     });
   });
 });

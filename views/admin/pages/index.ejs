@@ -6,7 +6,7 @@
       <th>URL</th>
       <th>Navigation Item</th>
       <th class="text-right">
-        <a class="btn btn-sm btn-primary" title="New Page" href="/pages/new">
+        <a class="btn btn-sm btn-primary" title="New Page" href="/admin/pages/new">
           <span class="glyphicon glyphicon-file"></span>
         </a>
       </th>
@@ -19,7 +19,7 @@
         <td><%= page.url %></td>
         <td>
           <% if (page.NavigationItem) { %>
-            <a href="/navigation/<%= page.NavigationItem.id %>/edit">
+            <a href="/admin/navigation/<%= page.NavigationItem.id %>/edit">
               <%= page.NavigationItem.title %>
             </a>
           <% } %>
@@ -28,10 +28,10 @@
           <a href="<%= page.url %>" title="View Page" class="btn btn-sm btn-default">
             <span class="glyphicon glyphicon-eye-open"></span>
           </a>
-          <a href="/pages/<%= page.id %>/edit" title="Edit Page" class="btn btn-sm btn-primary">
+          <a href="/admin/pages/<%= page.id %>/edit" title="Edit Page" class="btn btn-sm btn-primary">
             <span class="glyphicon glyphicon-edit"></span>
           </a>
-          <form action="/pages/<%= page.id %>" method="POST" class="inline">
+          <form action="/admin/pages/<%= page.id %>" method="POST" class="inline">
             <input type="hidden" name="_method" value="DELETE"/>
             <button class="btn btn-sm btn-danger" title="Delete Page">
               <span class="glyphicon glyphicon-trash"></span>

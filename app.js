@@ -26,8 +26,8 @@ var afterRoutes = require('./routes/after');
 
 // Routes.
 
-var pages = require('./routes/pages');
-var navigation = require('./routes/navigation');
+var website = require('./routes/website');
+var admin = require('./routes/admin');
 
 /* Bootstrapping */
 
@@ -71,8 +71,8 @@ app.use(markdownHelper());
 // Routes.
 
 beforeRoutes(app);
-app.use('/', pages);
-app.use('/navigation', navigation);
+app.use('/', website);
+app.use('/admin', admin);
 afterRoutes(app);
 
 /* Exports */
