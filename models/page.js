@@ -2,7 +2,15 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Page = sequelize.define('Page', {
-    title: DataTypes.STRING,
+    title: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'Title cannot be empty!'
+        }
+      }
+    },
     url: DataTypes.STRING,
     content: DataTypes.TEXT,
     enabled: { type: DataTypes.BOOLEAN, defaultValue: true }

@@ -2,10 +2,25 @@
 
 module.exports = function(sequelize, DataTypes) {
   var NavigationItem = sequelize.define("NavigationItem", {
-    title: DataTypes.STRING,
+    title: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'Title cannot be empty!'
+        }
+      }
+    },
     order: {
       type: DataTypes.INTEGER,
-      defaultValue: 0
+      defaultValue: 0,
+      allowNull: true,
+      validate: {
+        isInt: {
+          args: true,
+          msg: 'Order must be a number!'
+        }
+      }
     },
     url: {
       type: DataTypes.STRING,

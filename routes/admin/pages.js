@@ -35,13 +35,11 @@ router.post('/', function(req, res, next) {
     content: req.body.content || null,
     enabled: !!req.body.enabled
   }).then(function(page) {
-    if (!page) {
-      req.flash('danger', 'The page could not be created!');
-      return res.redirect('/admin/pages/new');
-    }
-
     req.flash('success', 'The page has been created!');
     res.redirect('/admin/pages/' + page.id + '/edit');
+  }).catch(function(err) {
+    req.flash('danger', err.errors[0].message);
+    res.redirect('/admin/pages/new');
   });
 });
 
@@ -83,6 +81,9 @@ router.put('/:id', function(req, res, next) {
       enabled: !!req.body.enabled
     }).then(function() {
       req.flash('success', 'The page has been saved!');
+    }).catch(function(err) {
+      req.flash('danger', err.errors[0].message);
+    }).finally(function() {
       res.redirect('/admin/pages/' + req.params.id + '/edit');
     });
   });

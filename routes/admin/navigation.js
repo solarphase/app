@@ -39,13 +39,11 @@ router.post('/', function(req, res, next) {
     ParentId: req.body.parentId || null,
     PageId: req.body.pageId || null
   }).then(function(item) {
-    if (!item) {
-      req.flash('danger', 'The navigation item could not be created!');
-      return res.redirect('/admin/navigation');
-    }
-
     req.flash('success', 'The navigation item has been created!');
     res.redirect('/admin/navigation/' + item.id + '/edit');
+  }).catch(function(err) {
+    req.flash('danger', err.errors[0].message);
+    res.redirect('/admin/navigation/new');
   });
 });
 
@@ -94,6 +92,9 @@ router.put('/:id', function(req, res, next) {
       PageId: req.body.pageId || null
     }).then(function() {
       req.flash('success', 'The navigation item has been saved!');
+    }).catch(function(err) {
+      req.flash('danger', err.errors[0].message);
+    }).finally(function() {
       res.redirect('/admin/navigation/' + req.params.id + '/edit');
     });
   });
