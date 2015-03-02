@@ -1,7 +1,8 @@
 # SolarPhase
 
-SolarPhase is the personal portfolio and blog of developer __Kimmy Andersson__
-and here you can find the complete source-code that powers the website.
+SolarPhase is the personal portfolio and blog of __Kimmy Andersson__ and this
+repository contains the entire source-code of the application that powers the
+website.
 
 ## License
 
