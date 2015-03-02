@@ -17,5 +17,9 @@ describe('Page', function() {
   it('should have a content property', function() {
     page.should.have.property('content');
   });
+
+  it('should have a enabled property', function() {
+    page.should.have.property('enabled');
+  });
 });
 

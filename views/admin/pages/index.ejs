@@ -5,6 +5,7 @@
       <th>Title</th>
       <th>URL</th>
       <th>Navigation Item</th>
+      <th>Enabled</th>
       <th class="text-right">
         <a class="btn btn-sm btn-primary" title="New Page" href="/admin/pages/new">
           <span class="glyphicon glyphicon-file"></span>
@@ -23,6 +24,11 @@
               <%= page.NavigationItem.title %>
             </a>
           <% } %>
+        </td>
+        <td>
+          <span
+            class="glyphicon glyphicon-<%= page.enabled ? 'ok' : 'remove' %>"
+            ></span>
         </td>
         <td class="text-right">
           <a href="/admin/pages/<%= page.id %>" title="View Page" class="btn btn-sm btn-default">

@@ -4,7 +4,8 @@ module.exports = function(sequelize, DataTypes) {
   var Page = sequelize.define('Page', {
     title: DataTypes.STRING,
     url: DataTypes.STRING,
-    content: DataTypes.TEXT
+    content: DataTypes.TEXT,
+    enabled: DataTypes.BOOLEAN
   }, {
     classMethods: {
       associate: function(models) {

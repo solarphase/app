@@ -8,7 +8,7 @@ var navigationHelper = require('../../lib/navigation-helper');
 /* GET page by 'url' property */
 router.get('*', function(req, res, next) {
   models.Page.find({
-    where: {url: req.path},
+    where: {url: req.path, enabled:true},
     include: [models.NavigationItem]
   }).then(function(page) {
     if (!page) {
