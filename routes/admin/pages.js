@@ -33,7 +33,7 @@ router.post('/', function(req, res, next) {
     title: req.body.title,
     url: req.body.url,
     content: req.body.content || null,
-    enabeld: req.body.enabled || false
+    enabled: req.body.enabled || false
   }).then(function(page) {
     if (!page) {
       req.flash('danger', 'The page could not be created!');
