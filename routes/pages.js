@@ -31,7 +31,9 @@ router.get('*', function(req, res, next) {
 
 /* GET list pages */
 router.get('/pages', function(req, res, next) {
-  models.Page.findAll().then(function(pages) {
+  models.Page.findAll({
+    include: [models.NavigationItem]
+  }).then(function(pages) {
     res.render('pages/index', {title: 'Pages', pages: pages});
   });
 });

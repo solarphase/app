@@ -4,6 +4,7 @@
     <tr>
       <th>Title</th>
       <th>URL</th>
+      <th>Navigation Item</th>
       <th class="text-right">
         <a class="btn btn-sm btn-primary" title="New Page" href="/pages/new">
           <span class="glyphicon glyphicon-file"></span>
@@ -16,6 +17,13 @@
       <tr>
         <td><%= page.title %></td>
         <td><%= page.url %></td>
+        <td>
+          <% if (page.NavigationItem) { %>
+            <a href="/navigation/<%= page.NavigationItem.id %>/edit">
+              <%= page.NavigationItem.title %>
+            </a>
+          <% } %>
+        </td>
         <td class="text-right">
           <a href="<%= page.url %>" title="View Page" class="btn btn-sm btn-default">
             <span class="glyphicon glyphicon-eye-open"></span>
