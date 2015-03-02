@@ -14,6 +14,10 @@ describe('NavigationItem', function() {
     item.should.have.property('order');
   });
 
+  it('should have a enabled property', function() {
+    item.should.have.property('enabled');
+  });
+
   describe('#url', function() {
     it('should be a property', function() {
       item.should.have.property('url');

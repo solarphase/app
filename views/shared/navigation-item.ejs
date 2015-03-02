@@ -1,3 +1,4 @@
+<% if (!item.enabled) return; %>
 <% var isActive = active.indexOf(item.id) > -1; %>
 <li class="<%= isActive ? 'active' : '' %>">
   <a href="<%= item.url %>"><%= item.title %></a>

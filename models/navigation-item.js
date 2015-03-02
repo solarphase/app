@@ -17,7 +17,8 @@ module.exports = function(sequelize, DataTypes) {
 
         return url;
       }
-    }
+    },
+    enabled: { type: DataTypes.BOOLEAN, defaultValue: true }
   }, {
     classMethods: {
       associate: function(models) {
