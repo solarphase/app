@@ -1,9 +1,9 @@
-<nav class="author-nav">
+<nav class="admin-nav">
   <div class="container">
     <div class="col-xs-4">
       Welcome, <strong>Kimmy Andersson</strong>!
     </div>
-    <div class="col-xs-8 text-right">
+    <div class="col-xs-8 inner-nav">
       <ul>
         <li><a href="#" title="Logout"><span class="glyphicon glyphicon-log-out"></span></a></li>
         <li>
@@ -11,15 +11,22 @@
             <span class="glyphicon glyphicon-user"></span>
           </a>
         </li>
-        <li>
-          <a href="/admin/pages" title="Pages">
-            <span class="glyphicon glyphicon-duplicate"></span>
+        <li class="dropdown text-left">
+          <a title="Website" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-globe"></span>
           </a>
-        </li>
-        <li>
-          <a href="/admin/navigation" title="Navigation">
-            <span class="glyphicon glyphicon-list"></span>
-          </a>
+          <ul class="dropdown-menu pull-right" role="menu">
+            <li>
+              <a href="/admin/pages">
+                <span class="glyphicon glyphicon-file"></span> Pages
+              </a>
+            </li>
+            <li>
+              <a href="/admin/navigation">
+                <span class="glyphicon glyphicon-list"></span> Navigation
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>

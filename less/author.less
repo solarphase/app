@@ -1,4 +1,4 @@
-.author-nav {
+.admin-nav {
   background: #eee;
   line-height: 40px;
   height: 40px;
@@ -6,25 +6,33 @@
 
   a {
     color: @gray-light;
+    cursor: pointer;
 
     &:hover { color: @gray; }
   }
 
-  ul {
+  .dropdown-menu > li > a {
+    color: @gray-light;
+    padding: 3px 10px;
+
+    span.glyphicon { margin-right: 5px; }
+  }
+
+  .inner-nav > ul {
     &:extend(.clearfix);
 
     list-style-type: none;
     margin: 0;
     padding: 0;
-  }
 
-  li {
-    text-align: center;
-    width: 25px;
-    height: 40px;
-    float: right;
+    & > li {
+      text-align: center;
+      width: 25px;
+      height: 40px;
+      float: right;
 
-    &.active > a { color: @gray; }
+      &.active > a { color: @gray; }
+    }
   }
 }
 
