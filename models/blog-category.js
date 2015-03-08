@@ -24,6 +24,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         BlogCategory.belongsTo(models.NavigationItem);
+        BlogCategory.hasMany(models.BlogArticle);
       }
     }
   });
