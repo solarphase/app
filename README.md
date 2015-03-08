@@ -86,5 +86,6 @@ This script bootstraps the application and starts it up as a HTTP service.
 This script runs the `bin/www` script, wrapped in a node-debug session which
 enables debugging through Chrome's development tools.
 
-*Note: This requires a global node-inspector install and Google Chrome.*
+*Note: The debug script expects that you have node-inspector installed globally
+using NPM and any Chrome/Chromium-based browser.*
 
