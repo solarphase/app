@@ -36,7 +36,7 @@ router.post('/', function(req, res, next) {
     enabled: !!req.body.enabled
   };
 
-  models.Page.create().then(function(page) {
+  models.Page.create(data).then(function(page) {
     req.flash('success', 'The page has been created!');
     res.redirect('/admin/pages/' + page.id + '/edit');
   }).catch(function(err) {
