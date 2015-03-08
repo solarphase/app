@@ -15,6 +15,8 @@ the accompanying LICENSE file.
 
  * Node.js
  * NPM
+ * The `sequelize-cli` NPM package installed globally.
+ * The `node-inspector` NPM package installed globally.
  * Bower
  * A POSIX-compliant OS. (Linux, OSX, etc)
 
@@ -36,9 +38,14 @@ the supplied scripts.
 
     $ ./bin/vendor
 
-You will also have to compile the LESS stylesheets and populate the database.
+You will also have to compile the LESS stylesheets:
 
     $ ./bin/less
+
+The final thing you need is a functional database, this is achieved by first
+running the migrations, then running the supplied setup script.
+
+    $ sequelize db:migrate
     $ ./bin/setup-database
 
 That's it! The application is now ready to run.

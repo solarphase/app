@@ -1,5 +1,7 @@
-var hyphenize = require('../lib/hyphenize');
 "use strict";
+
+var hyphenize = require('../lib/hyphenize');
+
 module.exports = function(sequelize, DataTypes) {
   var BlogCategory = sequelize.define("BlogCategory", {
     title: {
