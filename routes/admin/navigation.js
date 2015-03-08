@@ -31,17 +31,20 @@ router.get('/', function(req, res, next) {
 
 /* POST create navigation item */
 router.post('/', function(req, res, next) {
-  models.NavigationItem.create({
+  var data = {
     title: req.body.title,
     order: req.body.order || null,
     url: req.body.url || null,
     enabled: !!req.body.enabled,
-    ParentId: req.body.parentId || null,
-    PageId: req.body.pageId || null
-  }).then(function(item) {
+    ParentId: req.body.ParentId || null,
+    PageId: req.body.PageId || null
+  };
+
+  models.NavigationItem.create(data).then(function(item) {
     req.flash('success', 'The navigation item has been created!');
     res.redirect('/admin/navigation/' + item.id + '/edit');
   }).catch(function(err) {
+    req.session.formData = data;
     req.flash('danger', err.errors[0].message);
     res.redirect('/admin/navigation/new');
   });
@@ -49,9 +52,12 @@ router.post('/', function(req, res, next) {
 
 /* GET new navigation item */
 router.get('/new', function(req, res, next) {
+  var data = req.session.formData;
+  delete req.session.formData;
+
   res.render('admin/navigation/edit', {
     title: 'New Navigation Item',
-    item: models.NavigationItem.build({})
+    item: models.NavigationItem.build(data)
   });
 });
 
@@ -88,8 +94,8 @@ router.put('/:id', function(req, res, next) {
       order: req.body.order || null,
       url: req.body.url || null,
       enabled: !!req.body.enabled,
-      ParentId: req.body.parentId || null,
-      PageId: req.body.pageId || null
+      ParentId: req.body.ParentId || null,
+      PageId: req.body.PageId || null
     }).then(function() {
       req.flash('success', 'The navigation item has been saved!');
     }).catch(function(err) {

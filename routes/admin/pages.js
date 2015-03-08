@@ -29,15 +29,18 @@ router.get('/:id', function(req, res, next) {
 
 /* POST create page */
 router.post('/', function(req, res, next) {
-  models.Page.create({
+  var data = {
     title: req.body.title,
     url: req.body.url,
     content: req.body.content || null,
     enabled: !!req.body.enabled
-  }).then(function(page) {
+  };
+
+  models.Page.create().then(function(page) {
     req.flash('success', 'The page has been created!');
     res.redirect('/admin/pages/' + page.id + '/edit');
   }).catch(function(err) {
+    req.session.formData = data;
     req.flash('danger', err.errors[0].message);
     res.redirect('/admin/pages/new');
   });
@@ -45,9 +48,12 @@ router.post('/', function(req, res, next) {
 
 /* GET new page */
 router.get('/new', function(req, res, next) {
+  var data = req.session.formData;
+  delete req.session.formData;
+
   res.render('admin/pages/edit', {
     title: 'New Page',
-    page: models.Page.build({})
+    page: models.Page.build(data)
   });
 });
 

@@ -33,14 +33,14 @@
 
   <div class="form-group">
     <label for="navigation-parent">Parent</label>
-    <select id="navigation-parent" class="form-control" name="parentId">
+    <select id="navigation-parent" class="form-control" name="ParentId">
       <option value=""></option>
       <% var hasChildren = item.Children && item.Children.length > 0; %>
       <% navigation.forEach(function(navItem) { %>
         <% if (navItem.id !== item.id && !hasChildren) { %>
-          <% var isParent = item.Parent && item.Parent.id == navItem.id; %>
+          <% var selected = item.ParentId == navItem.id; %>
           <option value="<%= navItem.id %>"
-            <%= isParent ? 'selected' : '' %>>
+            <%= selected ? 'selected' : '' %>>
             <%= navItem.title %>
           </option>
         <% } %>
@@ -50,12 +50,12 @@
 
   <div class="form-group">
     <label for="navigation-page">Page</label>
-    <select id="navigation-page" class="form-control" name="pageId">
+    <select id="navigation-page" class="form-control" name="PageId">
       <option value=""></option>
       <% pages.forEach(function(page) { %>
         <% if (!page.NavigationItem || page.NavigationItem.id == item.id) { %>
           <option value="<%= page.id %>"
-            <% if (item.Page && item.Page.id == page.id) { %>
+            <% if (item.PageId == page.id) { %>
               selected
             <% } %>>
             <%= page.title %>
