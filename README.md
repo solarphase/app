@@ -81,9 +81,10 @@ the website up-and-running.
 
 This script bootstraps the application and starts it up as a HTTP service.
 
-#### Debug
+### bin/debug
 
-Debug mode is enabled by running the script like described below:
+This script runs the `bin/www` script, wrapped in a node-debug session which
+enables debugging through Chrome's development tools.
 
-    $ DEBUG=solarphase ./bin/www
+*Note: This requires a global node-inspector install and Google Chrome.*
 

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+DEBUG=solarphase node-debug ./bin/www
+
