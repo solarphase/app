@@ -1,0 +1,28 @@
+<h1><%= category.id ? 'Edit' : 'New' %> Blog Category</h1>
+<form action="/admin/blog/categories/<%= category.id %>" method="POST">
+  <% if (category.id) { %>
+    <input type="hidden" name="_method" value="PUT">
+  <% } %>
+
+  <div class="form-group">
+    <label for="category-title">Title</label>
+    <input id="category-title" class="form-control" type="text" name="title" value="<%= category.title %>">
+  </div>
+
+  <div class="form-group">
+    <label for="category-description">Description</label>
+    <input id="category-description" class="form-control" type="text" name="description" value="<%= category.description %>">
+  </div>
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="enabled" <%= category.id && !category.enabled ? '' : 'checked' %>>
+      Enabled
+    </label>
+  </div>
+
+  <div class="form-group text-right">
+    <a class="btn btn-sm btn-default" href="/admin/blog/categories">Cancel</a>
+    <input class="btn btn-sm btn-primary" type="submit" value="<%= category.id ? 'Save' : 'Create' %>">
+  </div>
+</form>
